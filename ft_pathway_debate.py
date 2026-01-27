@@ -31,3 +31,7 @@ def main() -> None:
     print()
 
     print("Both pathways work! Absolute: clear, Relative: concise")
+
+
+if __name__ == "__main__":
+    main()
