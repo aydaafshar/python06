@@ -7,26 +7,31 @@ import alchemy.transmutation
 
 
 def main() -> None:
+    def safe_call(label: str, func) -> None:
+        try:
+            print(f"{label}: ", func())
+        except Exception as e:
+            print(f"{label}: Error - {e}")
     print()
     print("=== Pathway Debate Mastery ===")
     print()
 
     print("Testing Absolute Imports (from basic.py):")
-    print("lead_to_gold(): ", lead_to_gold())
-    print("stone_to_gem(): ", stone_to_gem())
+    safe_call("lead_to_gold(): ", lead_to_gold)
+    safe_call("stone_to_gem(): ", stone_to_gem)
     print()
 
     print("Testing Relative Imports (from advanced.py):")
-    print("philosophers_stone(): ", philosophers_stone())
-    print("elixir_of_life()", elixir_of_life())
+    safe_call("philosophers_stone(): ", philosophers_stone)
+    safe_call("elixir_of_life()", elixir_of_life)
     print()
 
     print("Testing Package Access:")
-    print("alchemy.transmutation.lead_to_gold(): ",
-          alchemy.transmutation.lead_to_gold())
-    print(
+    safe_call("alchemy.transmutation.lead_to_gold(): ",
+              alchemy.transmutation.lead_to_gold)
+    safe_call(
         "alchemy.transmutation.philosophers_stone(): ",
-        alchemy.transmutation.philosophers_stone(),
+        alchemy.transmutation.philosophers_stone,
     )
     print()
 
